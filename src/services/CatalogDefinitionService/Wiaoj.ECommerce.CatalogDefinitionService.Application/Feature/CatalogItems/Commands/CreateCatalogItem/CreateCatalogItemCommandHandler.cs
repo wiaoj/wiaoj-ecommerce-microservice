@@ -19,6 +19,7 @@ internal sealed class CreateCatalogItemCommandHandler(ICatalogItemCreationServic
                                                  CreateCatalogItemCommandRequest request) {
         CatalogItemName name = CatalogItemName.New(request.Name);
         CatalogItemDescription description = CatalogItemDescription.New(request.Description);
+        Money price = Money.New(request.Currency, request.Price);
         CategoryId categoryId = CategoryId.New(request.CategoryId);
         Sku? sku = Sku.NewNullable(request.Sku);
         Quantity stockQuantity = Quantity.New(request.StockQuantity);
@@ -26,7 +27,7 @@ internal sealed class CreateCatalogItemCommandHandler(ICatalogItemCreationServic
         return creationService.Create(
             name,
             description,
-            //request.Price,
+            price,
             categoryId,
             sku,
             stockQuantity);

@@ -5,7 +5,7 @@ public interface ICatalogItemCreationService {
     CatalogItem Create(
         CatalogItemName name,
         CatalogItemDescription description,
-        //Money price,
+        Money price,
         CategoryId categoryId,
         Sku? sku,
         Quantity stockQuantity);

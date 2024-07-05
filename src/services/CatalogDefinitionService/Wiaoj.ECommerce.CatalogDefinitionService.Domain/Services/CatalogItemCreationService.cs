@@ -10,7 +10,8 @@ internal sealed class CatalogItemCreationService : ICatalogItemCreationService {
 
     public CatalogItem Create(
         CatalogItemName name,
-        CatalogItemDescription description, //Money price,
+        CatalogItemDescription description, 
+        Money price,
         CategoryId categoryId, 
         Sku? sku,
         Quantity stockQuantity) {
@@ -18,7 +19,7 @@ internal sealed class CatalogItemCreationService : ICatalogItemCreationService {
             CatalogItemId.New(),
             name,
             description,
-            //price,
+            price,
             categoryId,
             sku ?? GenerateSku(name, categoryId),
             stockQuantity);
