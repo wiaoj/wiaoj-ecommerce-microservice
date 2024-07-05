@@ -9,6 +9,9 @@
     <Authors>Wiaoj</Authors>
     <PackageTags>ddd</PackageTags>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <Version>1.0.1</Version>
+    <AssemblyVersion>$(VersionPrefix)</AssemblyVersion>
+    <FileVersion>$(VersionPrefix)</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
