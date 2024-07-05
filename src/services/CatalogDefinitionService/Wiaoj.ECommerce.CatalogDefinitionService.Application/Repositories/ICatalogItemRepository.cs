@@ -1,6 +1,6 @@
-﻿using Wiaoj.ECommerce.CatalogDefinitionService.Domain.ValueObjects;
+﻿using Wiaoj.ECommerce.CatalogDefinitionService.Domain;
 
-namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain;
+namespace Wiaoj.ECommerce.CatalogDefinitionService.Application.Repositories;
 public interface ICatalogItemRepository : IInsertRepository<CatalogItem> {
     //Task<CatalogItem> GetByIdAsync(CatalogItemId id);
     //Task<IEnumerable<CatalogItem>> GetAllAsync();
@@ -9,5 +9,5 @@ public interface ICatalogItemRepository : IInsertRepository<CatalogItem> {
 }
 
 public interface IInsertRepository<in T> /*where T : IAggregate */{
-    Task InsertAsync(T entity);
+    Task InsertAsync(T entity, CancellationToken cancellationToken);
 }
