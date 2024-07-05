@@ -36,6 +36,9 @@ public class CatalogItem : Aggregate<CatalogItemId> {
         this.tags = [];
     }
 
+    internal void UpdateName(CatalogItemName value) {
+        this.Name = value;
+    }
     //public void UpdateDetails(CatalogItemName name,
     //                          CatalogItemDescription description,
     //                          //Money price,

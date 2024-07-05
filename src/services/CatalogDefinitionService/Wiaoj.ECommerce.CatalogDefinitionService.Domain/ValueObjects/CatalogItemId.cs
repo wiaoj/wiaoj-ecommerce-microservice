@@ -12,6 +12,12 @@ public readonly record struct CatalogItemId : IId {
         return new(Guid.NewGuid().ToString());
     }
 
+    public static CatalogItemId New(String value) {
+        ArgumentException.ThrowIfNullOrWhiteSpace(value);
+        //ulid logic here
+        return new(value);
+    }
+
     public static implicit operator String(CatalogItemId id) {
         return id.Value;
     }
@@ -42,7 +48,7 @@ public readonly record struct Sku : IValueObject {
         }
         return new(value);
     }
-    
+
     public static Sku New(String value) {
         return new(value);
     }
