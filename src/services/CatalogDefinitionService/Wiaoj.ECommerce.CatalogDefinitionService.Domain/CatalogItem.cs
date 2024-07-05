@@ -5,7 +5,7 @@ namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain;
 public class CatalogItem : Aggregate<CatalogItemId> {
     public CatalogItemName Name { get; private set; }
     public CatalogItemDescription Description { get; private set; }
-    //public Money Price { get; private set; }
+    public Money Price { get; private set; }
     public CategoryId CategoryId { get; private set; }
     public Sku Sku { get; private set; }
     public Quantity StockQuantity { get; private set; }
@@ -21,13 +21,13 @@ public class CatalogItem : Aggregate<CatalogItemId> {
     internal CatalogItem(CatalogItemId id,
                        CatalogItemName name,
                        CatalogItemDescription description,
-                       //Money price,
+                       Money price,
                        CategoryId categoryId,
                        Sku sku,
                        Quantity stockQuantity) : base(id) {
         this.Name = name;
         this.Description = description;
-        //this.Price = price;
+        this.Price = price;
         this.CategoryId = categoryId;
         this.Sku = sku;
         this.StockQuantity = stockQuantity;
