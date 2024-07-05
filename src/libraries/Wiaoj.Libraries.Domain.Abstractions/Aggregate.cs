@@ -1,6 +1,6 @@
 ﻿namespace Wiaoj.Libraries.Domain.Abstractions;
-public abstract class Aggregate<TId>(TId id) : ICreatable, IUpdatable, IDeletable
-    where TId : IId {
+public abstract class Aggregate<TId>(TId id) : IId<TId>, ICreatable, IUpdatable, IDeletable
+    where TId : IValueObject {
     public TId Id => id;
     public DateTime CreatedAt { get; private set; }
     public DateTime? UpdatedAt { get; private set; }
