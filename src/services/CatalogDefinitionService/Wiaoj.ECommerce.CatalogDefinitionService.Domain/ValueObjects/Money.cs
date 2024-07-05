@@ -1,13 +1,22 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Numerics;
 using Wiaoj.ECommerce.CatalogDefinitionService.Domain.Exceptions;
 using Wiaoj.Libraries.Domain.Abstractions;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.ValueObjects;
-
 /// <summary>
 /// Represents a monetary value with its associated currency.
 /// </summary>
-public readonly record struct Money : IValueObject {
+public readonly record struct Money : IValueObject,
+    IAdditionOperators<Money, Money, Money>,
+    IAdditionOperators<Money, Decimal, Money>,
+    ISubtractionOperators<Money, Money, Money>,
+    ISubtractionOperators<Money, Decimal, Money>, 
+    IMultiplyOperators<Money, Money, Money>,
+    IMultiplyOperators<Money, Decimal, Money>, 
+    IDivisionOperators<Money, Money, Money>,
+    IDivisionOperators<Money, Decimal, Money>, 
+    IComparisonOperators<Money, Money, Boolean> {
     public String Currency { get; }
     public Decimal Amount { get; }
 
@@ -182,13 +191,13 @@ public readonly record struct Money : IValueObject {
         return left.Amount <= right.Amount;
     }
 
-    ///// <summary>
-    ///// Returns a string representation of the Money instance.
-    ///// </summary>
-    ///// <returns>A string representation of the Money instance in the format "Amount - Currency".</returns>
-    //public sealed override String ToString() {
-    //    return $"{this.Amount} ({this.Currency})";
-    //}
+    /// <summary>
+    /// Returns a string representation of the Money instance.
+    /// </summary>
+    /// <returns>A string representation of the Money instance in the format "Amount - Currency".</returns>
+    public override String ToString() {
+        return $"{this.Amount} ({this.Currency})";
+    }
 
     /// <summary>
     /// Throws a CurrencyMismatchException if the two Money instances have different currencies.
