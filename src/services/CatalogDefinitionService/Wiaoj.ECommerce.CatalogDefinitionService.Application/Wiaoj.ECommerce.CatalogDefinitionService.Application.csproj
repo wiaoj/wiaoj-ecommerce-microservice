@@ -7,12 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mediator.Abstractions" Version="2.0.*" />
-    <PackageReference Include="Mediator.SourceGenerator" Version="2.0.*">
+    <PackageReference Include="Mediator.Abstractions" Version="2.1.7" />
+    <PackageReference Include="Mediator.SourceGenerator" Version="2.1.7">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Scrutor" Version="4.2.2" />
+    <PackageReference Include="Wiaoj.Libraries.Domain.Abstractions" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>

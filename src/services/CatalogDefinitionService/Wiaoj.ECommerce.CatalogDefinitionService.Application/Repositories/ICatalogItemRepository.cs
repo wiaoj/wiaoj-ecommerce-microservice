@@ -13,12 +13,12 @@ public interface ICatalogItemRepository
     //Task DeleteAsync(CatalogItemId id);
 }
 
-public interface IInsertRepository<in TEntity> /*where T : IAggregate */{
+public interface IInsertRepository<in TEntity> where TEntity : IAggregate {
     Task InsertAsync(TEntity entity, CancellationToken cancellationToken);
 }
 public interface IDeleteRepository<in TEntityId> where TEntityId : IId {
     Task DeleteAsync(TEntityId id, CancellationToken cancellationToken);
 }
-public interface IGetByIdRepository<TEntity, in TEntityId> /*where T : IAggregate */ where TEntityId : IId {
+public interface IGetByIdRepository<TEntity, in TEntityId> where TEntity : IAggregate where TEntityId : IId {
     Task<TEntity> GetByIdAsync(TEntityId id, CancellationToken cancellationToken);
 }

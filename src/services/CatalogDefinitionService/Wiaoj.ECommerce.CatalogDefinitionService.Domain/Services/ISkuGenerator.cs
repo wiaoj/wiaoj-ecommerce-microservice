@@ -6,9 +6,8 @@ public interface ISkuGenerator {
 }
 
 internal sealed class DefaultSkuGenerator : ISkuGenerator {
-    public Sku Generate(CatalogItemName name, CategoryId categoryId) {
-        //TODO: Perhaps I could create an ID generator using ULID.
-        String skuString = $"{categoryId.Value}-{name.Value.AsSpan()[..3]}-{Guid.NewGuid().ToString().AsSpan()[..8]}".ToUpper();
+    public Sku Generate(CatalogItemName name, CategoryId categoryId) { 
+        String skuString = $"{categoryId.Value}-{name.Value.AsSpan()[..3]}-{Ulid.NewUlid().ToString().AsSpan()[..8]}".ToUpper();
         return Sku.New(skuString);
     }
 }
