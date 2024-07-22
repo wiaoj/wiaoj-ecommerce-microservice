@@ -9,7 +9,7 @@ public static class DependencyInjection {
     public static IServiceCollection AddApplicationServices(this IServiceCollection services) {
         services.AddMediator(options => {
             options.Namespace = "Wiaoj.ECommerce.CatalogDefinitionService.Application";
-            options.ServiceLifetime = ServiceLifetime.Scoped;
+            options.ServiceLifetime = ServiceLifetime.Transient;
         });
         services.AddSingleton(typeof(IPipelineBehavior<,>), typeof(TransactionBehavior<,>));
 
@@ -17,7 +17,7 @@ public static class DependencyInjection {
             _.AddCatalogCreationService();
             _.AddSkuGenerator();
         });
-
+        services.AddSingleton<IDateTimeProvider, DefaultDateTimeProvider>();
         return services;
     }
 

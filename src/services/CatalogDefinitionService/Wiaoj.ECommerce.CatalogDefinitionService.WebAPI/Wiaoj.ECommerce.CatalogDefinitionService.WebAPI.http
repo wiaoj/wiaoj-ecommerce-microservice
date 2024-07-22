@@ -1,0 +1,6 @@
+@Wiaoj.ECommerce.CatalogDefinitionService.WebAPI_HostAddress = http://localhost:5188
+
+GET {{Wiaoj.ECommerce.CatalogDefinitionService.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -9,6 +9,7 @@ using Wiaoj.ECommerce.CatalogDefinitionService.Persistence.Repositories;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Persistence;
 public static class DependencyInjection {
+    private const string ConnectionString = "Data Source=localhost;Initial Catalog=ecommerce;User ID=sa;Password=MssqlPassword1.;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services) {
         services.AddInterceptors();
         services.AddDbContext();
@@ -24,7 +25,7 @@ public static class DependencyInjection {
 
     private static void AddDbContext(this IServiceCollection services) {
         services.AddDbContextPool<CatalogDefinitionDbContext>((serviceProvider, options) => {
-            options.UseSqlServer("",
+            options.UseSqlServer(ConnectionString,
                 sqlServerOptions => {
                     sqlServerOptions.EnableRetryOnFailure(
                         maxRetryCount: 10,

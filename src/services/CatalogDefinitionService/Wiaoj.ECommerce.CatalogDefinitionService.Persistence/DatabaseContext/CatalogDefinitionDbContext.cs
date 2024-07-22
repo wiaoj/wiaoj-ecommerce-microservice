@@ -5,9 +5,9 @@ using Wiaoj.ECommerce.CatalogDefinitionService.Application.Abstractions;
 using Wiaoj.ECommerce.CatalogDefinitionService.Domain;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Persistence.DatabaseContext;
-internal sealed class CatalogDefinitionDbContext : DbContext, ICatalogDefinitionDbContext, IUnitOfWork {
+internal sealed class CatalogDefinitionDbContext(DbContextOptions options) : DbContext(options), ICatalogDefinitionDbContext, IUnitOfWork {
     public DbSet<CatalogItem> CatalogItem => Set<CatalogItem>();
-     
+
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         base.OnModelCreating(modelBuilder);
