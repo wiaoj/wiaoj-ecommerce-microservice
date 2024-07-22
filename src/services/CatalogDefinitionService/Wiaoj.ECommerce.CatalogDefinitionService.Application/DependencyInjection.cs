@@ -6,7 +6,7 @@ namespace Wiaoj.ECommerce.CatalogDefinitionService.Application;
 public static class DependencyInjection {
     public static IServiceCollection AddApplicationServices(this IServiceCollection services) {
         services.AddMediator(options => {
-            options.Namespace = typeof(DependencyInjection).Assembly.FullName;
+            //options.Namespace = typeof(DependencyInjection).Assembly.FullName;
             options.ServiceLifetime = ServiceLifetime.Scoped;
         });
 
