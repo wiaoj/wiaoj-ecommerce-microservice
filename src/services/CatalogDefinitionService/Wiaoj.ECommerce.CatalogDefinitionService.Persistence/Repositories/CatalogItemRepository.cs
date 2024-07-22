@@ -6,9 +6,9 @@ using Wiaoj.ECommerce.CatalogDefinitionService.Persistence.DatabaseContext;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Persistence.Repositories;
 internal sealed class CatalogItemRepository : ICatalogItemRepository {
-    private readonly CatalogDefinitionDbContext dbContext;
+    private readonly ICatalogDefinitionDbContext dbContext;
 
-    public CatalogItemRepository(CatalogDefinitionDbContext dbContext) {
+    public CatalogItemRepository(ICatalogDefinitionDbContext dbContext) {
         this.dbContext = dbContext;
     }
 
