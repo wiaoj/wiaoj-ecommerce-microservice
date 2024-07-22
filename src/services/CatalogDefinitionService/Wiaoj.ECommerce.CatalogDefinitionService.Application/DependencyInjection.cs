@@ -6,7 +6,7 @@ namespace Wiaoj.ECommerce.CatalogDefinitionService.Application;
 public static class DependencyInjection {
     public static IServiceCollection AddApplicationServices(this IServiceCollection services) {
         services.AddMediator(options => {
-            options.Namespace = "Wiaoj.ECommerce.CatalogDefinitionService.Application";
+            options.Namespace = typeof(DependencyInjection).Assembly.FullName;
             options.ServiceLifetime = ServiceLifetime.Scoped;
         });
 
@@ -24,6 +24,7 @@ public static class DependencyInjection {
             .AsImplementedInterfaces()
             .WithSingletonLifetime();
     }
+
     private static void AddCatalogCreationService(this ITypeSourceSelector _) {
         _.FromAssemblyOf<ICatalogItemCreationService>()
             .AddClasses(classes => classes.AssignableTo(typeof(ICatalogItemCreationService)))
