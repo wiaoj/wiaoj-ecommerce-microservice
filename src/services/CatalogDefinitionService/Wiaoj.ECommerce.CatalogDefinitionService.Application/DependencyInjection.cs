@@ -1,20 +1,23 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Mediator;
+using Microsoft.Extensions.DependencyInjection;
 using Scrutor;
+using Wiaoj.ECommerce.CatalogDefinitionService.Application.Behaviors;
 using Wiaoj.ECommerce.CatalogDefinitionService.Domain.Services;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Application;
 public static class DependencyInjection {
     public static IServiceCollection AddApplicationServices(this IServiceCollection services) {
         services.AddMediator(options => {
-            options.Namespace = typeof(DependencyInjection).Assembly.FullName;
-            options.ServiceLifetime = ServiceLifetime.Scoped;
+            options.Namespace = "Wiaoj.ECommerce.CatalogDefinitionService.Application";
+            options.ServiceLifetime = ServiceLifetime.Transient;
         });
+        services.AddSingleton(typeof(IPipelineBehavior<,>), typeof(TransactionBehavior<,>));
 
         services.Scan(_ => {
             _.AddCatalogCreationService();
             _.AddSkuGenerator();
         });
-
+        services.AddSingleton<IDateTimeProvider, DefaultDateTimeProvider>();
         return services;
     }
 

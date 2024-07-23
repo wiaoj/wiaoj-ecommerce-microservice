@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Numerics;
+﻿using System.Numerics;
 using Wiaoj.ECommerce.CatalogDefinitionService.Domain.Exceptions;
 using Wiaoj.Libraries.Domain.Abstractions;
 
@@ -11,11 +10,11 @@ public readonly record struct Money : IValueObject,
     IAdditionOperators<Money, Money, Money>,
     IAdditionOperators<Money, Decimal, Money>,
     ISubtractionOperators<Money, Money, Money>,
-    ISubtractionOperators<Money, Decimal, Money>, 
+    ISubtractionOperators<Money, Decimal, Money>,
     IMultiplyOperators<Money, Money, Money>,
-    IMultiplyOperators<Money, Decimal, Money>, 
+    IMultiplyOperators<Money, Decimal, Money>,
     IDivisionOperators<Money, Money, Money>,
-    IDivisionOperators<Money, Decimal, Money>, 
+    IDivisionOperators<Money, Decimal, Money>,
     IComparisonOperators<Money, Money, Boolean> {
     public String Currency { get; }
     public Decimal Amount { get; }

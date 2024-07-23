@@ -1,6 +1,7 @@
 ﻿using Mediator;
 using Wiaoj.ECommerce.CatalogDefinitionService.Application.Feature.CatalogItems.Commands.CreateCatalogItem;
 using Wiaoj.ECommerce.CatalogDefinitionService.Application.Repositories;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain;
 using Wiaoj.ECommerce.CatalogDefinitionService.Domain.ValueObjects;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Application.Feature.CatalogItems.Commands.DeleteCatalogItem;
@@ -8,7 +9,12 @@ internal sealed class DeleteCatalogItemCommandHandler(ICatalogItemRepository rep
     : IRequestHandler<DeleteCatalogItemCommandRequest> {
 
     public async ValueTask<Unit> Handle(DeleteCatalogItemCommandRequest request, CancellationToken cancellationToken) {
-        await repository.DeleteAsync(CatalogItemId.New(request.Id), cancellationToken);
+        CatalogItem? catalogItem = await repository.GetByIdAsync(CatalogItemId.New(request.Id), cancellationToken);
+
+        if(catalogItem is null)
+            throw new Exception("Catalog Item not found");
+
+        repository.Delete(catalogItem);
         return Unit.Value;
     }
 }
