@@ -17,7 +17,7 @@ public class CatalogItem : Aggregate<CatalogItemId> {
     public IReadOnlyCollection<ImageUrl> Images => this.images.AsReadOnly();
     public IReadOnlyCollection<Tag> Tags => this.tags.AsReadOnly();
 
-    //private CatalogItem() { } // For ORM
+    private CatalogItem() : base(CatalogItemId.New()){ } // For ORM
     internal CatalogItem(CatalogItemId id,
                        CatalogItemName name,
                        CatalogItemDescription description,

@@ -13,15 +13,15 @@ internal sealed class CatalogItemRepository : ICatalogItemRepository {
     }
 
     public void Delete(CatalogItem catalogItem) {
-        this.dbContext.CatalogItem.Remove(catalogItem);
+        this.dbContext.CatalogItems.Remove(catalogItem);
     }
 
     public async Task<CatalogItem?> GetByIdAsync(CatalogItemId id, CancellationToken cancellationToken) {
-        return await this.dbContext.CatalogItem.AsNoTracking()
+        return await this.dbContext.CatalogItems.AsNoTracking()
                                                .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
     }
 
     public async Task InsertAsync(CatalogItem entity, CancellationToken cancellationToken) {
-        await this.dbContext.CatalogItem.AddAsync(entity, cancellationToken);
+        await this.dbContext.CatalogItems.AddAsync(entity, cancellationToken);
     }
 }

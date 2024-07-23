@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.DependencyInjection;
 using Wiaoj.ECommerce.CatalogDefinitionService.Application.Abstractions;
@@ -9,7 +10,7 @@ using Wiaoj.ECommerce.CatalogDefinitionService.Persistence.Repositories;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Persistence;
 public static class DependencyInjection {
-    private const string ConnectionString = "Data Source=localhost;Initial Catalog=ecommerce;User ID=sa;Password=MssqlPassword1.;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+    private const String ConnectionString = "Data Source=localhost;Initial Catalog=ecommerce;User ID=sa;Password=MssqlPassword1.;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services) {
         services.AddInterceptors();
         services.AddDbContext();
@@ -41,6 +42,11 @@ public static class DependencyInjection {
         }, poolSize: 1024);
         services.AddScoped<ICatalogDefinitionDbContext, CatalogDefinitionDbContext>();
         services.AddScoped<IUnitOfWork, CatalogDefinitionDbContext>();
+
+
+        CatalogDefinitionDbContext context = services.BuildServiceProvider().GetRequiredService<CatalogDefinitionDbContext>();
+        DatabaseFacade databaseFacade = context.Database;
+        if(databaseFacade.EnsureCreated()) { }
     }
 
     private static void AddRepositories(this IServiceCollection services) {
