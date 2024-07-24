@@ -1,6 +1,6 @@
 ﻿namespace Wiaoj.Libraries.Domain.Abstractions;
 public abstract class Aggregate<TId> : IAggregate
-    where TId : IId {
+    where TId : IId<TId> {
     public TId Id { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public DateTime? UpdatedAt { get; private set; }
