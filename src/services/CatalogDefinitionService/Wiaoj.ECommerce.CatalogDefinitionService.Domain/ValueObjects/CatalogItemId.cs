@@ -1,7 +1,7 @@
 ﻿using Wiaoj.Libraries.Domain.Abstractions;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.ValueObjects;
-public readonly record struct CatalogItemId : IId {
+public readonly record struct CatalogItemId : IId<CatalogItemId> {
     public String Value { get; }
 
     private CatalogItemId(String value) {
@@ -15,9 +15,9 @@ public readonly record struct CatalogItemId : IId {
     public static CatalogItemId New(String value) {
         ArgumentException.ThrowIfNullOrWhiteSpace(value);
 
-        if(!Ulid.TryParse(value, out var _)) 
+        if(!Ulid.TryParse(value, out var _))
             throw new Exception("Id is not valid");
-        
+
         return new(value);
     }
 
@@ -25,7 +25,7 @@ public readonly record struct CatalogItemId : IId {
         return id.Value;
     }
 }
-public readonly record struct CategoryId : IId {
+public readonly record struct CategoryId : IId<CategoryId> {
     public String Value { get; }
     private CategoryId(String value) {
         this.Value = value;
@@ -39,7 +39,7 @@ public readonly record struct CategoryId : IId {
         return new(Guid.NewGuid().ToString());
     }
 }
-public readonly record struct Sku : IValueObject {
+public readonly record struct Sku : IValueObject<Sku, String> {
     public String Value { get; }
     private Sku(String value) {
         this.Value = value;
@@ -56,7 +56,7 @@ public readonly record struct Sku : IValueObject {
         return new(value);
     }
 }
-public readonly record struct Quantity : IValueObject {
+public readonly record struct Quantity : IValueObject<Quantity, Int16> {
     public Int16 Value { get; }
     private Quantity(Int16 value) {
         this.Value = value;
