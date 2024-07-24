@@ -67,5 +67,4 @@ public readonly record struct Quantity : IValueObject<Quantity, Int16> {
     }
 }
 public readonly record struct ImageUrl(String Url);
-public readonly record struct Tag(String Value);
 public readonly record struct DiscountPercentage(Decimal Value);

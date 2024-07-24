@@ -12,10 +12,8 @@ public class CatalogItem : Aggregate<CatalogItemId> {
     public Boolean IsAvailable { get; private set; }
     //public DiscountPercentage Discount { get; private set; }
     private readonly List<ImageUrl> images;
-    private readonly List<Tag> tags;
 
     public IReadOnlyCollection<ImageUrl> Images => this.images.AsReadOnly();
-    public IReadOnlyCollection<Tag> Tags => this.tags.AsReadOnly();
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     private CatalogItem() : base(){ } // For ORM
@@ -35,7 +33,6 @@ public class CatalogItem : Aggregate<CatalogItemId> {
         this.StockQuantity = stockQuantity;
         this.IsAvailable = true;
         this.images = [];
-        this.tags = [];
     }
 
     internal void UpdateName(CatalogItemName value) {
