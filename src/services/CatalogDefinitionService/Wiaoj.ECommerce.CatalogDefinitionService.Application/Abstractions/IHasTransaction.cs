@@ -1,0 +1,2 @@
+﻿namespace Wiaoj.ECommerce.CatalogDefinitionService.Application.Abstractions;
+internal interface IHasTransaction;

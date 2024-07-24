@@ -4,7 +4,7 @@ using Wiaoj.ECommerce.CatalogDefinitionService.Application.Abstractions;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Application.Behaviors;
 internal sealed class TransactionBehavior<TMessage, TResponse>(IUnitOfWork unitOfWork) : IPipelineBehavior<TMessage, TResponse>
-      where TMessage : notnull, IMessage {
+      where TMessage : notnull, IMessage, IHasTransaction {
 
     public async ValueTask<TResponse> Handle(TMessage message,
                                              CancellationToken cancellationToken,

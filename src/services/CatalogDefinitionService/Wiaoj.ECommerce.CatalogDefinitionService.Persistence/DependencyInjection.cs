@@ -40,9 +40,9 @@ public static class DependencyInjection {
                 serviceProvider.GetRequiredService<UpdatableInterceptor>(),
                 serviceProvider.GetRequiredService<DeletableInterceptor>());
         }, poolSize: 1024);
-        services.AddScoped<ICatalogDefinitionDbContext, CatalogDefinitionDbContext>();
-        services.AddScoped<IUnitOfWork, CatalogDefinitionDbContext>();
 
+        services.AddScoped<ICatalogDefinitionDbContext>(provider => provider.GetRequiredService<CatalogDefinitionDbContext>());
+        services.AddScoped<IUnitOfWork>(provider => provider.GetRequiredService<CatalogDefinitionDbContext>());
 
         CatalogDefinitionDbContext context = services.BuildServiceProvider().GetRequiredService<CatalogDefinitionDbContext>();
         DatabaseFacade databaseFacade = context.Database;

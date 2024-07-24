@@ -9,12 +9,15 @@ public readonly record struct CatalogItemId : IId {
     }
 
     public static CatalogItemId New() {
-        return new(Guid.NewGuid().ToString());
+        return new(Ulid.NewUlid().ToString());
     }
 
     public static CatalogItemId New(String value) {
         ArgumentException.ThrowIfNullOrWhiteSpace(value);
-        //ulid logic here
+
+        if(!Ulid.TryParse(value, out var _)) 
+            throw new Exception("Id is not valid");
+        
         return new(value);
     }
 

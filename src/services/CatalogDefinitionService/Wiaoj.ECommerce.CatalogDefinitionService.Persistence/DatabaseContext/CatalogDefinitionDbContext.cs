@@ -5,7 +5,7 @@ using Wiaoj.ECommerce.CatalogDefinitionService.Application.Abstractions;
 using Wiaoj.ECommerce.CatalogDefinitionService.Domain;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Persistence.DatabaseContext;
-internal sealed class CatalogDefinitionDbContext(DbContextOptions<CatalogDefinitionDbContext> options) 
+internal sealed class CatalogDefinitionDbContext(DbContextOptions<CatalogDefinitionDbContext> options)
     : DbContext(options), ICatalogDefinitionDbContext, IUnitOfWork {
     public DbSet<CatalogItem> CatalogItems => Set<CatalogItem>();
 
@@ -19,7 +19,7 @@ internal sealed class CatalogDefinitionDbContext(DbContextOptions<CatalogDefinit
         return strategy.ExecuteAsync(operation, cancellationToken);
     }
 
-    Task IUnitOfWork.SaveChangesAsync(CancellationToken cancellationToken) {
-        return SaveChangesAsync(cancellationToken);
-    }
+    //Task IUnitOfWork.SaveChangesAsync(CancellationToken cancellationToken) {
+    //    return SaveChangesAsync(cancellationToken);
+    //}
 }

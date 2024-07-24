@@ -11,7 +11,7 @@ public static class DependencyInjection {
             options.Namespace = "Wiaoj.ECommerce.CatalogDefinitionService.Application";
             options.ServiceLifetime = ServiceLifetime.Transient;
         });
-        services.AddSingleton(typeof(IPipelineBehavior<,>), typeof(TransactionBehavior<,>));
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(TransactionBehavior<,>));
 
         services.Scan(_ => {
             _.AddCatalogCreationService();
