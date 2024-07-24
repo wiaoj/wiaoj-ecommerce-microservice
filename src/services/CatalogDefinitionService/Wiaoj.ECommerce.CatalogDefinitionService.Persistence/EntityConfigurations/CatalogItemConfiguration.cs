@@ -6,7 +6,7 @@ using Wiaoj.ECommerce.CatalogDefinitionService.Domain.ValueObjects;
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Persistence.EntityConfigurations;
 internal class CatalogItemConfiguration : IEntityTypeConfiguration<CatalogItem> {
     public void Configure(EntityTypeBuilder<CatalogItem> builder) {
-        builder.ToTable("catalog-items");
+        builder.ToTable("catalog-items", "catalog-definition");
 
         builder.HasKey(x => x.Id);
 

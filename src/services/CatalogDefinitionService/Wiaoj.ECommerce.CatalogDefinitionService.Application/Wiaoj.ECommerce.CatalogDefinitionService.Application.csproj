@@ -13,7 +13,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Scrutor" Version="4.2.2" />
-    <PackageReference Include="Wiaoj.Libraries.Domain.Abstractions" Version="1.0.2" />
+    <PackageReference Include="Wiaoj.Libraries.Domain.Abstractions" Version="1.0.*" />
   </ItemGroup>
 
   <ItemGroup>
