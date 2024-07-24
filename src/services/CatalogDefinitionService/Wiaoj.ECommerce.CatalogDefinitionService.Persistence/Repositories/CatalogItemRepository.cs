@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Wiaoj.ECommerce.CatalogDefinitionService.Application.Abstractions;
 using Wiaoj.ECommerce.CatalogDefinitionService.Application.Repositories;
 using Wiaoj.ECommerce.CatalogDefinitionService.Domain;
 using Wiaoj.ECommerce.CatalogDefinitionService.Domain.ValueObjects;
@@ -19,10 +18,10 @@ internal sealed class CatalogItemRepository : ICatalogItemRepository {
 
     public async Task<CatalogItem?> GetByIdAsync(CatalogItemId id, CancellationToken cancellationToken) {
         return await this.dbContext.CatalogItems.AsNoTracking()
-                                               .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+                                                .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
     }
 
     public async Task InsertAsync(CatalogItem entity, CancellationToken cancellationToken) {
-        await this.dbContext.CatalogItems.AddAsync(entity, cancellationToken); 
+        await this.dbContext.CatalogItems.AddAsync(entity, cancellationToken);
     }
 }

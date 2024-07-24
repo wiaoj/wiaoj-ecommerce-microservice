@@ -6,7 +6,7 @@ namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.ValueObjects;
 /// <summary>
 /// Represents a monetary value with its associated currency.
 /// </summary>
-public readonly record struct Money : IValueObject,
+public readonly record struct Money : IValueObject<Money, String, Decimal>,
     IAdditionOperators<Money, Money, Money>,
     IAdditionOperators<Money, Decimal, Money>,
     ISubtractionOperators<Money, Money, Money>,

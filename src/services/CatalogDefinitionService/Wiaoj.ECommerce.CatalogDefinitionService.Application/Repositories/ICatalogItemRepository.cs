@@ -19,6 +19,6 @@ public interface IInsertRepository<in TEntity> where TEntity : IAggregate {
 public interface IDeleteRepository<in TEntity> where TEntity : IAggregate {
     void Delete(TEntity entity);
 }
-public interface IGetByIdRepository<TEntity, in TEntityId> where TEntity : IAggregate where TEntityId : IId {
+public interface IGetByIdRepository<TEntity, in TEntityId> where TEntity : IAggregate where TEntityId : IId<TEntityId> {
     Task<TEntity?> GetByIdAsync(TEntityId id, CancellationToken cancellationToken);
 }
