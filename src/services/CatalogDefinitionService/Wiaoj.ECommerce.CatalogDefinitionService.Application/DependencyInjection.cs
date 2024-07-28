@@ -17,7 +17,6 @@ public static class DependencyInjection {
             _.AddCatalogCreationService();
             _.AddSkuGenerator();
         });
-        services.AddSingleton<IDateTimeProvider, DefaultDateTimeProvider>();
         return services;
     }
 

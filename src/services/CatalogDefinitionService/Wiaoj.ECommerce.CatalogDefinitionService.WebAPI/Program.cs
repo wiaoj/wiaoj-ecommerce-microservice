@@ -1,6 +1,7 @@
 using Mediator;
 using Wiaoj.ECommerce.CatalogDefinitionService.Application;
 using Wiaoj.ECommerce.CatalogDefinitionService.Application.Feature.CatalogItems.Commands.CreateCatalogItem;
+using Wiaoj.ECommerce.CatalogDefinitionService.Infrastructure;
 using Wiaoj.ECommerce.CatalogDefinitionService.Persistence;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services
     .AddApplicationServices()
+    .AddInfrastructureServices()
     .AddPersistenceServices();
 
 WebApplication app = builder.Build();
