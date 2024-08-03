@@ -11,7 +11,7 @@ internal sealed class CatalogItemCreationService : ICatalogItemCreationService {
 
     public CatalogItem Create(CatalogItemName name,
                               CatalogItemDescription description,
-                              CatalogItemPrice price,
+                              Money price,
                               CategoryId categoryId,
                               Sku? sku,
                               Quantity stockQuantity) {

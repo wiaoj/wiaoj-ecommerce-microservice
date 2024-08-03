@@ -60,10 +60,4 @@ internal class CatalogItemConfiguration : IEntityTypeConfiguration<CatalogItem> 
                             .SetPropertyAccessMode(PropertyAccessMode.Field);
         });
     }
-
-    private static Money ConvertToMoney(String value) {
-        String[] parts = value.Split(':');
-        return Money.New(parts[0], Decimal.Parse(parts[1]));
-
-    }
 }
