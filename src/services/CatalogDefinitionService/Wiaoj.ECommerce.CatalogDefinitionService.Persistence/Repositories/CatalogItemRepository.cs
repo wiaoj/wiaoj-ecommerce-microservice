@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Wiaoj.ECommerce.CatalogDefinitionService.Application.Repositories;
-using Wiaoj.ECommerce.CatalogDefinitionService.Domain;
-using Wiaoj.ECommerce.CatalogDefinitionService.Domain.ValueObjects;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
 using Wiaoj.ECommerce.CatalogDefinitionService.Persistence.DatabaseContext;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Persistence.Repositories;

@@ -1,8 +1,8 @@
 ﻿using Mediator;
 using Wiaoj.ECommerce.CatalogDefinitionService.Application.Abstractions;
 using Wiaoj.ECommerce.CatalogDefinitionService.Application.Repositories;
-using Wiaoj.ECommerce.CatalogDefinitionService.Domain;
-using Wiaoj.ECommerce.CatalogDefinitionService.Domain.Services;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.Services;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Application.Feature.CatalogItems.Commands.CreateCatalogItem;
 internal sealed class CreateCatalogItemCommandHandler(ICatalogItemCreationService creationService,

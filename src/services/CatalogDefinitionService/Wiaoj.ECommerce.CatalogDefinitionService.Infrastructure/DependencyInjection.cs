@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Wiaoj.ECommerce.CatalogDefinitionService.Domain.Services;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.Services;
 using Wiaoj.ECommerce.CatalogDefinitionService.Infrastructure.Services;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Infrastructure;

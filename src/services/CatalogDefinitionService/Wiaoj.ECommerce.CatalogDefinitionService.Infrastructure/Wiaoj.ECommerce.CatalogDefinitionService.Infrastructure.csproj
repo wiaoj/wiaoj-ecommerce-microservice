@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Wiaoj.ECommerce.CatalogDefinitionService.Application\Wiaoj.ECommerce.CatalogDefinitionService.Application.csproj" />
-    <ProjectReference Include="..\Wiaoj.ECommerce.CatalogDefinitionService.Domain\Wiaoj.ECommerce.CatalogDefinitionService.Domain.csproj" />
   </ItemGroup>
 
 </Project>

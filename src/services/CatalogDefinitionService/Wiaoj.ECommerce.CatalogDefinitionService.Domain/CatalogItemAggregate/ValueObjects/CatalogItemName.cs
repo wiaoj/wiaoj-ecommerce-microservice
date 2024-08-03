@@ -1,7 +1,7 @@
-﻿using Wiaoj.ECommerce.CatalogDefinitionService.Domain.Exceptions;
+﻿using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.Exceptions;
 using Wiaoj.Libraries.Domain.Abstractions;
 
-namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.ValueObjects;
+namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
 public readonly record struct CatalogItemName : IValueObject<CatalogItemName, String> {
     public const Int32 MinLength = 3;
     public const Int32 MaxLength = 100;

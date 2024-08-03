@@ -46,6 +46,7 @@ public static class DependencyInjection {
 
         CatalogDefinitionDbContext context = services.BuildServiceProvider().GetRequiredService<CatalogDefinitionDbContext>();
         DatabaseFacade databaseFacade = context.Database;
+        if(databaseFacade.EnsureDeleted()) { }
         if(databaseFacade.EnsureCreated()) { }
     }
 

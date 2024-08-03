@@ -2,7 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Scrutor;
 using Wiaoj.ECommerce.CatalogDefinitionService.Application.Behaviors;
-using Wiaoj.ECommerce.CatalogDefinitionService.Domain.Services;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.Services;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CategoryAggregate.Services;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Application;
 public static class DependencyInjection {
@@ -14,7 +15,8 @@ public static class DependencyInjection {
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(TransactionBehavior<,>));
 
         services.Scan(_ => {
-            _.AddCatalogCreationService();
+            _.AddCreationService<ICatalogItemCreationService>(); 
+            _.AddCreationService<ICategoryCreationService>(); 
             _.AddSkuGenerator();
         });
         return services;
@@ -25,11 +27,11 @@ public static class DependencyInjection {
             .AddClasses(classes => classes.AssignableTo(typeof(ISkuGenerator)))
             .AsImplementedInterfaces()
             .WithSingletonLifetime();
-    }
+    } 
 
-    private static void AddCatalogCreationService(this ITypeSourceSelector _) {
-        _.FromAssemblyOf<ICatalogItemCreationService>()
-            .AddClasses(classes => classes.AssignableTo(typeof(ICatalogItemCreationService)))
+    private static void AddCreationService<TCreationService>(this ITypeSourceSelector _) {
+        _.FromAssemblyOf<TCreationService>()
+            .AddClasses(classes => classes.AssignableTo(typeof(TCreationService)))
             .AsImplementedInterfaces()
             .WithSingletonLifetime();
     }
