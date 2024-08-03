@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wiaoj.ECommerce.CatalogDefi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wiaoj.ECommerce.CatalogDefinitionService.Persistence", "src\services\CatalogDefinitionService\Wiaoj.ECommerce.CatalogDefinitionService.Persistence\Wiaoj.ECommerce.CatalogDefinitionService.Persistence.csproj", "{A3D001E1-2A56-4F62-B7FE-3CA2AE60DA0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wiaoj.ECommerce.CatalogDefinitionService.WebAPI", "src\services\CatalogDefinitionService\Wiaoj.ECommerce.CatalogDefinitionService.WebAPI\Wiaoj.ECommerce.CatalogDefinitionService.WebAPI.csproj", "{D433BAAE-248B-4512-BCE3-9050A11371E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wiaoj.ECommerce.CatalogDefinitionService.WebAPI", "src\services\CatalogDefinitionService\Wiaoj.ECommerce.CatalogDefinitionService.WebAPI\Wiaoj.ECommerce.CatalogDefinitionService.WebAPI.csproj", "{D433BAAE-248B-4512-BCE3-9050A11371E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wiaoj.ECommerce.CatalogDefinitionService.Infrastructure", "src\services\CatalogDefinitionService\Wiaoj.ECommerce.CatalogDefinitionService.Infrastructure\Wiaoj.ECommerce.CatalogDefinitionService.Infrastructure.csproj", "{366F38FA-5B26-4CD5-8995-95037FBB71A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{D433BAAE-248B-4512-BCE3-9050A11371E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D433BAAE-248B-4512-BCE3-9050A11371E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D433BAAE-248B-4512-BCE3-9050A11371E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{366F38FA-5B26-4CD5-8995-95037FBB71A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{366F38FA-5B26-4CD5-8995-95037FBB71A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{366F38FA-5B26-4CD5-8995-95037FBB71A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{366F38FA-5B26-4CD5-8995-95037FBB71A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{39C8F089-712B-447B-8560-80E727066B16} = {FE922C57-A521-46B7-8E10-321A641A0510}
 		{A3D001E1-2A56-4F62-B7FE-3CA2AE60DA0D} = {FE922C57-A521-46B7-8E10-321A641A0510}
 		{D433BAAE-248B-4512-BCE3-9050A11371E1} = {FE922C57-A521-46B7-8E10-321A641A0510}
+		{366F38FA-5B26-4CD5-8995-95037FBB71A9} = {FE922C57-A521-46B7-8E10-321A641A0510}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D742EFC8-C25B-46CB-A412-9A1663C6E216}

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Wiaoj.ECommerce.CatalogDefinitionService.Application\Wiaoj.ECommerce.CatalogDefinitionService.Application.csproj" />
+    <ProjectReference Include="..\Wiaoj.ECommerce.CatalogDefinitionService.Infrastructure\Wiaoj.ECommerce.CatalogDefinitionService.Infrastructure.csproj" />
     <ProjectReference Include="..\Wiaoj.ECommerce.CatalogDefinitionService.Persistence\Wiaoj.ECommerce.CatalogDefinitionService.Persistence.csproj" />
   </ItemGroup>
 

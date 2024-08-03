@@ -1,8 +1,8 @@
 ﻿using Mediator;
 using Wiaoj.ECommerce.CatalogDefinitionService.Application.Feature.CatalogItems.Commands.CreateCatalogItem;
 using Wiaoj.ECommerce.CatalogDefinitionService.Application.Repositories;
-using Wiaoj.ECommerce.CatalogDefinitionService.Domain;
-using Wiaoj.ECommerce.CatalogDefinitionService.Domain.ValueObjects;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Application.Feature.CatalogItems.Commands.DeleteCatalogItem;
 internal sealed class DeleteCatalogItemCommandHandler(ICatalogItemRepository repository)

@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Wiaoj.ECommerce.CatalogDefinitionService.Domain;
-using Wiaoj.ECommerce.CatalogDefinitionService.Domain.ValueObjects;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CategoryAggregate.ValueObjects;
+using Wiaoj.ECommerce.CatalogDefinitionService.Persistence.EntityConfigurations.ValueConverters;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Persistence.EntityConfigurations;
 internal class CatalogItemConfiguration : IEntityTypeConfiguration<CatalogItem> {
@@ -11,16 +13,10 @@ internal class CatalogItemConfiguration : IEntityTypeConfiguration<CatalogItem> 
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Id)
-               .HasColumnName("id")
-               .IsRequired()
-               .ValueGeneratedNever()
-               .HasConversion(id => id.Value, value => CatalogItemId.New(value));
+               .Id<CatalogItemId, CatalogItemIdConverter>();
 
         builder.Property(x => x.CategoryId)
-               .HasColumnName("catalog_id")
-               .IsRequired()
-               .ValueGeneratedNever()
-               .HasConversion(id => id.Value, value => CategoryId.New(value));
+               .Id<CategoryId, CategoryIdConverter>("category_id");
 
         builder.Property(x => x.Name)
                .HasColumnName("name")
@@ -49,21 +45,25 @@ internal class CatalogItemConfiguration : IEntityTypeConfiguration<CatalogItem> 
                .HasColumnName("is_available")
                .IsRequired();
 
-        //builder.OwnsOne(x => x.Price, navigationBuilder => {
-        //    navigationBuilder.Property(m => m.Currency)
-        //         .IsRequired()
-        //         .HasMaxLength(3);
+        builder.OwnsOne(catalogItem => catalogItem.Price, navigationBuilder => {
+            navigationBuilder.WithOwner();
 
-        //    navigationBuilder.Property(m => m.Amount)
-        //         .IsRequired()
-        //         .HasColumnType("decimal(18,2)");
-        //});
+            navigationBuilder.Property(m => m.Currency)
+                 .IsRequired()
+                 .HasMaxLength(3);
 
-        builder.Ignore(x => x.Price);
-        builder.Ignore(x => x.Images);
-        builder.Ignore(x => x.Tags);
+            navigationBuilder.Property(m => m.Amount)
+                 .IsRequired()
+                 .HasColumnType("decimal(18,2)");
 
-        //builder.Metadata.FindNavigation(nameof(CatalogItem.Price))!
-        //                .SetPropertyAccessMode(PropertyAccessMode.Field);
+            builder.Metadata.FindNavigation(nameof(CatalogItem.Price))!
+                            .SetPropertyAccessMode(PropertyAccessMode.Field);
+        });
+    }
+
+    private static Money ConvertToMoney(String value) {
+        String[] parts = value.Split(':');
+        return Money.New(parts[0], Decimal.Parse(parts[1]));
+
     }
 }

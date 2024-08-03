@@ -1,12 +1,12 @@
 ﻿using System.Numerics;
-using Wiaoj.ECommerce.CatalogDefinitionService.Domain.Exceptions;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.Exceptions;
 using Wiaoj.Libraries.Domain.Abstractions;
 
-namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.ValueObjects;
+namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
 /// <summary>
 /// Represents a monetary value with its associated currency.
 /// </summary>
-public readonly record struct Money : IValueObject<Money, String, Decimal>,
+public record Money : IValueObject<Money, String, Decimal>,
     IAdditionOperators<Money, Money, Money>,
     IAdditionOperators<Money, Decimal, Money>,
     ISubtractionOperators<Money, Money, Money>,
