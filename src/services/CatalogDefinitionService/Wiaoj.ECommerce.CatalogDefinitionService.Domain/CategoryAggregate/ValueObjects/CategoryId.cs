@@ -14,4 +14,8 @@ public sealed record CategoryId : IId<CategoryId> {
     public static CategoryId New() {
         return new(Guid.NewGuid().ToString());
     }
+
+    public static implicit operator String(CategoryId id) {
+        return id.Value;
+    }
 }
