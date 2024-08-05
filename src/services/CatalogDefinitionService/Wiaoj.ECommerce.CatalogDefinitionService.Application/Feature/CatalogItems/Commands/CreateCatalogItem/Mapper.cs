@@ -8,7 +8,7 @@ internal static class Mapper {
     internal static CatalogItem CreateCatalogItem(this ICatalogItemCreationService creationService, CreateCatalogItemCommandRequest request) {
         CatalogItemName name = CatalogItemName.New(request.Name);
         CatalogItemDescription description = CatalogItemDescription.New(request.Description);
-        CatalogItemPrice price = CatalogItemPrice.New(Money.New(request.Currency, request.Price));
+        Money price = Money.New(request.Currency, request.Price)
         CategoryId categoryId = CategoryId.New(request.CategoryId);
         Sku? sku = Sku.NewNullable(request.Sku);
         Quantity stockQuantity = Quantity.New(request.StockQuantity);

@@ -18,13 +18,13 @@ public class CatalogItem : Aggregate<CatalogItemId> {
     internal CatalogItem(CatalogItemId id,
                        CatalogItemName name,
                        CatalogItemDescription description,
-                       CatalogItemPrice price,
+                       Money price,
                        CategoryId categoryId,
                        Sku sku,
                        Quantity stockQuantity) : base(id) {
         this.Name = name;
         this.Description = description;
-        this.Price = price.Value;
+        this.Price = price;
         this.CategoryId = categoryId;
         this.Sku = sku;
         this.StockQuantity = stockQuantity;

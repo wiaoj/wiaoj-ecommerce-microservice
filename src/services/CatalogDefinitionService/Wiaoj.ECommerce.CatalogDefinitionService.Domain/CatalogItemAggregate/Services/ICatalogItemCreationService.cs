@@ -5,7 +5,7 @@ namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.S
 public interface ICatalogItemCreationService {
     CatalogItem Create(CatalogItemName name,
                        CatalogItemDescription description,
-                       CatalogItemPrice price,
+                       Money price,
                        CategoryId categoryId,
                        Sku? sku,
                        Quantity stockQuantity);

@@ -3,12 +3,22 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate;
 using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
 using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CategoryAggregate.ValueObjects;
+using Wiaoj.ECommerce.CatalogDefinitionService.Persistence.DatabaseContext;
 using Wiaoj.ECommerce.CatalogDefinitionService.Persistence.EntityConfigurations.ValueConverters;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Persistence.EntityConfigurations;
 internal class CatalogItemConfiguration : IEntityTypeConfiguration<CatalogItem> {
+    private static class Constants {
+        public const String Name = "name";
+        public const String Description = "description";
+        public const String Sku = "sku";
+        public const String StockQuantity = "stock_quantity";
+        public const String IsAvailable = "is_available";
+        public const String CategoryId = "category_id";
+        public const String MoneyColumnType = "decimal(18,2)";
+    }
     public void Configure(EntityTypeBuilder<CatalogItem> builder) {
-        builder.ToTable("catalog-items", "catalog-definition");
+        builder.ToTable(DbConstants.CatalogItemsTableName, DbConstants.Schema);
 
         builder.HasKey(x => x.Id);
 
@@ -16,33 +26,33 @@ internal class CatalogItemConfiguration : IEntityTypeConfiguration<CatalogItem> 
                .Id<CatalogItemId, CatalogItemIdConverter>();
 
         builder.Property(x => x.CategoryId)
-               .Id<CategoryId, CategoryIdConverter>("category_id");
+               .Id<CategoryId, CategoryIdConverter>(Constants.CategoryId);
 
         builder.Property(x => x.Name)
-               .HasColumnName("name")
+               .HasColumnName(Constants.Name)
                .IsRequired()
                .HasMaxLength(CatalogItemName.MaxLength)
                .HasConversion(name => name.Value, value => CatalogItemName.New(value));
 
         builder.Property(x => x.Description)
-               .HasColumnName("description")
+               .HasColumnName(Constants.Description)
                .IsRequired()
                .HasMaxLength(CatalogItemDescription.MaxLength)
                .HasConversion(name => name.Value, value => CatalogItemDescription.New(value));
 
         builder.Property(x => x.Sku)
-               .HasColumnName("sku")
+               .HasColumnName(Constants.Sku)
                .IsRequired()
                .HasMaxLength(150)
                .HasConversion(name => name.Value, value => Sku.New(value));
 
         builder.Property(x => x.StockQuantity)
-               .HasColumnName("stock_quantity")
+               .HasColumnName(Constants.StockQuantity)
                .IsRequired()
                .HasConversion(quantity => quantity.Value, value => Quantity.New(value));
 
         builder.Property(x => x.IsAvailable)
-               .HasColumnName("is_available")
+               .HasColumnName(Constants.IsAvailable)
                .IsRequired();
 
         builder.OwnsOne(catalogItem => catalogItem.Price, navigationBuilder => {
@@ -54,16 +64,10 @@ internal class CatalogItemConfiguration : IEntityTypeConfiguration<CatalogItem> 
 
             navigationBuilder.Property(m => m.Amount)
                  .IsRequired()
-                 .HasColumnType("decimal(18,2)");
+                 .HasColumnType(Constants.MoneyColumnType);
 
             builder.Metadata.FindNavigation(nameof(CatalogItem.Price))!
                             .SetPropertyAccessMode(PropertyAccessMode.Field);
         });
-    }
-
-    private static Money ConvertToMoney(String value) {
-        String[] parts = value.Split(':');
-        return Money.New(parts[0], Decimal.Parse(parts[1]));
-
     }
 }

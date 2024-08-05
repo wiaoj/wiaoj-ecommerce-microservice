@@ -1,15 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
 using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CategoryAggregate;
 using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CategoryAggregate.ValueObjects;
 using Wiaoj.ECommerce.CatalogDefinitionService.Persistence.DatabaseContext;
 using Wiaoj.ECommerce.CatalogDefinitionService.Persistence.EntityConfigurations.ValueConverters;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Persistence.EntityConfigurations;
-internal class CategoryConfiguration : IEntityTypeConfiguration<Category> {
+internal sealed class CategoryConfiguration : IEntityTypeConfiguration<Category> {
+    private static class Constants {
+        public const String Id = "id";
+        public const String Name = "name";
+        public const String CatalogItemId = "catalog-item-id";
+    }
+
     public void Configure(EntityTypeBuilder<Category> builder) {
-        builder.ToTable(DbConstants.CategoryTableName, DbConstants.Schema);
+        builder.ToTable(DbConstants.CategoriesTableName, DbConstants.Schema);
 
         builder.HasKey(x => x.Id);
 
@@ -17,8 +22,8 @@ internal class CategoryConfiguration : IEntityTypeConfiguration<Category> {
                .Id<CategoryId, CategoryIdConverter>();
 
         builder.Property(x => x.Name)
-               .HasColumnName("name")
-               .IsRequired()
+               .HasColumnName(Constants.Name)
+               .IsRequired(true)
                .HasMaxLength(CategoryName.MaxLength)
                .HasConversion(name => name.Value, value => CategoryName.New(value));
 
@@ -28,12 +33,12 @@ internal class CategoryConfiguration : IEntityTypeConfiguration<Category> {
     private static void ConfigureCategoryCatalogItemIdsTable(EntityTypeBuilder<Category> builder) {
         builder.OwnsMany(category => category.Items, navigationBuilder => {
             navigationBuilder.ToTable(DbConstants.CategoryCatalogItemIds.TableName, DbConstants.Schema);
-            navigationBuilder.HasKey("Id");
+            navigationBuilder.HasKey(Constants.Id);
 
             navigationBuilder.WithOwner().HasForeignKey(DbConstants.CategoryCatalogItemIds.ForeignKey);
 
             navigationBuilder.Property(catalogItemId => catalogItemId.Value)
-                .HasColumnName("CatalogItemId")
+                .HasColumnName(Constants.CatalogItemId)
                 .ValueGeneratedNever()
                 .IsRequired();
         });
