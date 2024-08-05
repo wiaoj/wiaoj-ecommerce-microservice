@@ -1,5 +1,4 @@
 ﻿using Mediator;
-using Wiaoj.ECommerce.CatalogDefinitionService.Application.Feature.CatalogItems.Commands.CreateCatalogItem;
 using Wiaoj.ECommerce.CatalogDefinitionService.Application.Repositories;
 using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate;
 using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
