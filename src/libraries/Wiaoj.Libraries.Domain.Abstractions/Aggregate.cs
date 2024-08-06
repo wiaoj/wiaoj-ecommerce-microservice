@@ -1,4 +1,6 @@
-﻿namespace Wiaoj.Libraries.Domain.Abstractions;
+﻿using Wiaoj.Libraries.Domain.Abstractions.Exceptions;
+
+namespace Wiaoj.Libraries.Domain.Abstractions;
 public abstract class Aggregate<TId> : IAggregate
     where TId : class, IId<TId> {
     public TId Id { get; private set; }
@@ -16,21 +18,21 @@ public abstract class Aggregate<TId> : IAggregate
 
     public void Delete(DateTime deletedAt) {
         if(this.IsDeleted)
-            throw new InvalidOperationException("Entity is already deleted.");
+            throw new EntityAlreadyDeletedException();
         this.IsDeleted = true;
         this.DeletedAt = deletedAt;
     }
 
     public void Restore() {
         if(!this.IsDeleted)
-            throw new InvalidOperationException("Entity is not deleted.");
+            throw new EntityNotDeletedException();
         this.IsDeleted = false;
         this.DeletedAt = null;
     }
 
     public void SetCreatedAt(DateTime createdAt) {
         if(this.CreatedAt != default)
-            throw new InvalidOperationException("CreatedAt can only be set once.");
+            throw new CreatedAtAlreadySetException();
         this.CreatedAt = createdAt;
     }
 
