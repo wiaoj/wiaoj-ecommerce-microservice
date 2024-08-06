@@ -14,7 +14,7 @@ internal sealed class UpdatableInterceptor(IDateTimeProvider dateTimeProvider) :
             return ValueTask.FromResult(result);
 
         var updatableEntries = dbContext.ChangeTracker.Entries<IUpdatable>()
-                                        .Where(entry => entry.State == EntityState.Modified);
+                                                      .Where(entry => entry.State is EntityState.Modified);
 
         foreach(var entry in updatableEntries) {
             entry.Entity.SetUpdatedAt(dateTimeProvider.UtcNow);

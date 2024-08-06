@@ -8,7 +8,8 @@ internal sealed class CreateCategoryCommandHandler(ICategoryCreationService crea
                                                    ICategoryRepository repository)
     : IRequestHandler<CreateCategoryCommandRequest, CreateCategoryCommandResponse> {
     public async ValueTask<CreateCategoryCommandResponse> Handle(CreateCategoryCommandRequest request,
-                                                              CancellationToken cancellationToken) {
+                                                                 CancellationToken cancellationToken) {
+        //Check category is already exists
         Category catalogItem = creationService.CreateCategory(request);
         await repository.InsertAsync(catalogItem, cancellationToken);
         return new(catalogItem.Id);

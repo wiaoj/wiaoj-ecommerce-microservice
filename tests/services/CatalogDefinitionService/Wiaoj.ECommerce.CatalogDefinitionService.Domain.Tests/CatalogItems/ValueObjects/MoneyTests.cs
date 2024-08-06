@@ -1,6 +1,5 @@
 using FluentAssertions;
-using Wiaoj.ECommerce.CatalogDefinitionService.Domain.Exceptions;
-using Wiaoj.ECommerce.CatalogDefinitionService.Domain.ValueObjects;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.Tests.CatalogItems.ValueObjects;
 public sealed class MoneyTests {
