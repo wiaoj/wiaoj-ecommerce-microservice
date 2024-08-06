@@ -8,10 +8,12 @@ namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.Tests.CatalogItems.Ser
 public sealed class CatalogItemCreationServiceTests {
     private readonly ICatalogItemCreationService service;
     private readonly ISkuGenerator skuGenerator;
+    private readonly IDateTimeProvider dateTimeProvider;
 
     public CatalogItemCreationServiceTests() {
         this.skuGenerator = Substitute.For<ISkuGenerator>();
-        this.service = new CatalogItemCreationService(this.skuGenerator);
+        this.dateTimeProvider = Substitute.For<IDateTimeProvider>();
+        this.service = new CatalogItemCreationService(this.skuGenerator, this.dateTimeProvider);
     }
 
     [Fact]

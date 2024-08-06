@@ -22,6 +22,7 @@ public static class DependencyInjection {
         services.AddSingleton<CreatableInterceptor>();
         services.AddSingleton<UpdatableInterceptor>();
         services.AddSingleton<DeletableInterceptor>();
+        services.AddSingleton<DomainEventDiscoveryInterceptor>();
     }
 
     private static void AddDbContext(this IServiceCollection services) {
@@ -38,7 +39,8 @@ public static class DependencyInjection {
             .AddInterceptors(
                 serviceProvider.GetRequiredService<CreatableInterceptor>(),
                 serviceProvider.GetRequiredService<UpdatableInterceptor>(),
-                serviceProvider.GetRequiredService<DeletableInterceptor>());
+                serviceProvider.GetRequiredService<DeletableInterceptor>(),
+                serviceProvider.GetRequiredService<DomainEventDiscoveryInterceptor>());
         }, poolSize: 1024);
 
         services.AddScoped<ICatalogDefinitionDbContext>(provider => provider.GetRequiredService<CatalogDefinitionDbContext>());
@@ -46,7 +48,7 @@ public static class DependencyInjection {
 
         CatalogDefinitionDbContext context = services.BuildServiceProvider().GetRequiredService<CatalogDefinitionDbContext>();
         DatabaseFacade databaseFacade = context.Database;
-        if(databaseFacade.EnsureDeleted()) { }
+        //if(databaseFacade.EnsureDeleted()) { }
         if(databaseFacade.EnsureCreated()) { }
     }
 

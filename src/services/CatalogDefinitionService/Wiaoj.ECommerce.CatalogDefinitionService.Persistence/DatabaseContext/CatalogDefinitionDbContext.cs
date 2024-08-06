@@ -4,6 +4,7 @@ using System.Reflection;
 using Wiaoj.ECommerce.CatalogDefinitionService.Application.Abstractions;
 using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate;
 using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CategoryAggregate;
+using Wiaoj.Libraries.Domain.Abstractions;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Persistence.DatabaseContext;
 internal sealed class CatalogDefinitionDbContext(DbContextOptions<CatalogDefinitionDbContext> options)

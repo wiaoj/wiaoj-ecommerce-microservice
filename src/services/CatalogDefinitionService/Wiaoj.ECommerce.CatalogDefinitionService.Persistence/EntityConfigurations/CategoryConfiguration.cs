@@ -27,13 +27,15 @@ internal sealed class CategoryConfiguration : IEntityTypeConfiguration<Category>
                .HasMaxLength(CategoryName.MaxLength)
                .HasConversion(name => name.Value, value => CategoryName.New(value));
 
+        builder.Ignore(x => x.DomainEvents);
+
         ConfigureCategoryCatalogItemIdsTable(builder);
     }
 
     private static void ConfigureCategoryCatalogItemIdsTable(EntityTypeBuilder<Category> builder) {
         builder.OwnsMany(category => category.Items, navigationBuilder => {
             navigationBuilder.ToTable(DbConstants.CategoryCatalogItemIds.TableName, DbConstants.Schema);
-            navigationBuilder.HasKey(Constants.Id);
+            //navigationBuilder.HasKey(Constants.Id);
 
             navigationBuilder.WithOwner().HasForeignKey(DbConstants.CategoryCatalogItemIds.ForeignKey);
 
