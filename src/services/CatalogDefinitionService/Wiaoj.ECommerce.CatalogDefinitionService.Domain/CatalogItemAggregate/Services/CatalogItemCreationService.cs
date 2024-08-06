@@ -26,7 +26,7 @@ internal sealed class CatalogItemCreationService : ICatalogItemCreationService {
                                       categoryId,
                                       sku ?? GenerateSku(name, categoryId),
                                       stockQuantity);
-        catalogItem.AddDomainEvent(CreateDomainEvent(this.dateTimeProvider, catalogItem.Id));
+        catalogItem.AddDomainEvent(CreateDomainEvent(this.dateTimeProvider, catalogItem.Id, catalogItem.CategoryId));
         return catalogItem;
     }
 
@@ -34,9 +34,12 @@ internal sealed class CatalogItemCreationService : ICatalogItemCreationService {
         return this.skuGenerator.Generate(name, categoryId);
     }
 
-    private CatalogItemCreatedDomainEvent CreateDomainEvent(IDateTimeProvider dateTimeProvider, CatalogItemId id) {
+    private CatalogItemCreatedDomainEvent CreateDomainEvent(IDateTimeProvider dateTimeProvider,
+                                                            CatalogItemId id,
+                                                            CategoryId categoryId) {
         return new(dateTimeProvider.UtcNow, 1) {
-            CatalogItemId = id
+            CatalogItemId = id,
+            CategoryId = categoryId
         };
     }
 }

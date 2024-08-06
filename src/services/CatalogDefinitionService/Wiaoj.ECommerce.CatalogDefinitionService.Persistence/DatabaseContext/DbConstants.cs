@@ -7,6 +7,6 @@ internal static class DbConstants {
 
     public static class CategoryCatalogItemIds {
         public const String TableName = "category-catalog-item-ids";
-        public const String ForeignKey = "CategoryId";
+        public const String ForeignKey = "category-id";
     }
 }
