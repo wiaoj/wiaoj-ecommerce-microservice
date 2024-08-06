@@ -14,7 +14,7 @@ internal sealed class CreatableInterceptor(IDateTimeProvider dateTimeProvider) :
             return ValueTask.FromResult(result);
 
         var creatableEntries = dbContext.ChangeTracker.Entries<ICreatable>()
-                                        .Where(entry => entry.State == EntityState.Added);
+                                                      .Where(entry => entry.State is EntityState.Added);
 
         foreach(var entry in creatableEntries) {
             entry.Entity.SetCreatedAt(dateTimeProvider.UtcNow);

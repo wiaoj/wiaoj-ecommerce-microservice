@@ -14,7 +14,7 @@ internal sealed class DeletableInterceptor(IDateTimeProvider dateTimeProvider) :
             return ValueTask.FromResult(result);
 
         var deletableEntries = dbContext.ChangeTracker.Entries<IDeletable>()
-                                        .Where(entry => entry.State == EntityState.Deleted);
+                                                      .Where(entry => entry.State is EntityState.Deleted);
 
         foreach(var entry in deletableEntries) {
             entry.State = EntityState.Modified;

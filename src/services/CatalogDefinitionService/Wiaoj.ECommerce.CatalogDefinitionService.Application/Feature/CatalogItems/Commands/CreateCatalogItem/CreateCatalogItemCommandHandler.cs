@@ -10,6 +10,7 @@ internal sealed class CreateCatalogItemCommandHandler(ICatalogItemCreationServic
     : IRequestHandler<CreateCatalogItemCommandRequest, CreateCatalogItemCommandResponse> {
     public async ValueTask<CreateCatalogItemCommandResponse> Handle(CreateCatalogItemCommandRequest request,
                                                               CancellationToken cancellationToken) {
+        //Check category is exists
         CatalogItem catalogItem = creationService.CreateCatalogItem(request);
         await repository.InsertAsync(catalogItem, cancellationToken);
         return new(catalogItem.Id);

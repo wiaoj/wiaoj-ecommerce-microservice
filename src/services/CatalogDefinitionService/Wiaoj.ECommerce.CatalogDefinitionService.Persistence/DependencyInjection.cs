@@ -33,7 +33,7 @@ public static class DependencyInjection {
                         maxRetryDelay: TimeSpan.FromSeconds(30),
                         errorNumbersToAdd: null)
                     .MigrationsAssembly(typeof(CatalogDefinitionDbContext).Assembly.FullName)
-                    .MigrationsHistoryTable(tableName: HistoryRepository.DefaultTableName, schema: "catalog_definition");
+                    .MigrationsHistoryTable(tableName: HistoryRepository.DefaultTableName, schema: DbConstants.Schema);
                 })
             .AddInterceptors(
                 serviceProvider.GetRequiredService<CreatableInterceptor>(),
