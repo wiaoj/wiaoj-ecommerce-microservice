@@ -1,6 +1,7 @@
 using Mediator;
 using System.Transactions;
 using Wiaoj.ECommerce.CatalogDefinitionService.Application.Abstractions;
+using Wiaoj.Libraries.Domain.Abstractions.DomainEvents;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Application.Behaviors;
 internal sealed class TransactionBehavior<TMessage, TResponse>(IUnitOfWork unitOfWork) : IPipelineBehavior<TMessage, TResponse>

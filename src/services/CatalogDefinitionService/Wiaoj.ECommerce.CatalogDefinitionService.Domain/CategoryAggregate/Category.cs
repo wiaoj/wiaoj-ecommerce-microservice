@@ -13,4 +13,11 @@ public sealed class Category : Aggregate<CategoryId> {
         this.Name = name;
         this.items = items;
     }
+
+    public void AddCatalogItem(CatalogItemId catalogItemId) {
+        if(this.items.Exists(x => x == catalogItemId))
+            return;
+
+        this.items.Add(catalogItemId);
+    }
 }

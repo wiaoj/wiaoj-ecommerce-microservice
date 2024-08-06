@@ -55,6 +55,8 @@ internal class CatalogItemConfiguration : IEntityTypeConfiguration<CatalogItem> 
                .HasColumnName(Constants.IsAvailable)
                .IsRequired();
 
+        builder.Ignore(x => x.DomainEvents);
+
         builder.OwnsOne(catalogItem => catalogItem.Price, navigationBuilder => {
             navigationBuilder.WithOwner();
 
