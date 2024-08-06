@@ -1,4 +1,6 @@
-﻿using Wiaoj.ECommerce.CatalogDefinitionService.Domain.ValueObjects;
+﻿using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CategoryAggregate.ValueObjects;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.Tests.TestDatas;
 internal static class CatalogItemTestDatas {
@@ -10,13 +12,12 @@ internal static class CatalogItemTestDatas {
         Sku sku = Sku.New("TEST-SKU");
         Quantity quantity = Quantity.New(10);
 
-        return new(
-            CatalogItemId.New(),
-            name,
-            description,
-            money,
-            categoryId,
-            sku,
-            quantity);
+        return new(CatalogItemId.New(),
+                   name,
+                   description,
+                   money,
+                   categoryId,
+                   sku,
+                   quantity);
     }
 }

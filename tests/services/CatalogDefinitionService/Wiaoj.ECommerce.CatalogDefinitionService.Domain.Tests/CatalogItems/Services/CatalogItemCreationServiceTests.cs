@@ -1,7 +1,8 @@
-﻿using FluentAssertions;
-using NSubstitute;
-using Wiaoj.ECommerce.CatalogDefinitionService.Domain.Services;
-using Wiaoj.ECommerce.CatalogDefinitionService.Domain.ValueObjects;
+﻿using NSubstitute;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.Services;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CategoryAggregate.ValueObjects;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.Tests.CatalogItems.Services;
 public sealed class CatalogItemCreationServiceTests {
@@ -10,7 +11,7 @@ public sealed class CatalogItemCreationServiceTests {
 
     public CatalogItemCreationServiceTests() {
         this.skuGenerator = Substitute.For<ISkuGenerator>();
-        this.service = new CatalogItemCreationService(skuGenerator);
+        this.service = new CatalogItemCreationService(this.skuGenerator);
     }
 
     [Fact]
@@ -27,11 +28,11 @@ public sealed class CatalogItemCreationServiceTests {
 
         // Act
         CatalogItem catalogItem = this.service.Create(name,
-                                                 description,
-                                                 money,
-                                                 categoryId,
-                                                 null,
-                                                 quantity);
+                                                      description,
+                                                      money,
+                                                      categoryId,
+                                                      null,
+                                                      quantity);
 
         // Assert
         catalogItem.Validate(name, description, money, categoryId, generatedSku, quantity);
