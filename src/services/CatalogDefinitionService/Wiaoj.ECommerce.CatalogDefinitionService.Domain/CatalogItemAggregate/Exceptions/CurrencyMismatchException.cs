@@ -8,7 +8,7 @@
 /// <param name="leftCurrency">The currency of the first Money instance.</param>
 /// <param name="rightCurrency">The currency of the second Money instance.</param>
 public sealed class CurrencyMismatchException(
-    string leftCurrency,
-    string rightCurrency)
+    String leftCurrency,
+    String rightCurrency)
     : Exception(
         $"Cannot compare Money instances with different currencies: {leftCurrency} and {rightCurrency}.");

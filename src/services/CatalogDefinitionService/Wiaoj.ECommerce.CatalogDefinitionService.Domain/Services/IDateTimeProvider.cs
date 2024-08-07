@@ -1,5 +1,4 @@
 ﻿namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.Services;
-public interface IDateTimeProvider
-{
+public interface IDateTimeProvider {
     DateTime UtcNow { get; }
 }

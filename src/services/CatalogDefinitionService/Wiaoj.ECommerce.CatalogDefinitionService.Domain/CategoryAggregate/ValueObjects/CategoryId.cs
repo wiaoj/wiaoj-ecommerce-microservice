@@ -1,6 +1,4 @@
-﻿using Wiaoj.Libraries.Domain.Abstractions;
-
-namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.CategoryAggregate.ValueObjects;
+﻿namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.CategoryAggregate.ValueObjects;
 public sealed record CategoryId : IId<CategoryId> {
     public String Value { get; }
     private CategoryId(String value) {
@@ -14,8 +12,8 @@ public sealed record CategoryId : IId<CategoryId> {
     public static CategoryId New(String value) {
         ArgumentException.ThrowIfNullOrWhiteSpace(value);
 
-        return Ulid.TryParse(value, out Ulid _) 
-            ? new(value) 
+        return Ulid.TryParse(value, out Ulid _)
+            ? new(value)
             : throw new Exception("Id is not valid");
     }
 
