@@ -1,4 +1,4 @@
-﻿using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.Services;
+﻿using Wiaoj.ECommerce.CatalogDefinitionService.Domain.Services;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Infrastructure.Services;
 internal sealed class SystemDateTimeProvider : IDateTimeProvider {

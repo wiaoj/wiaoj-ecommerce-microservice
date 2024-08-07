@@ -16,16 +16,16 @@ public class CatalogItem : Aggregate<CatalogItemId> {
     private CatalogItem() : base() { } // For ORM
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     internal CatalogItem(CatalogItemId id,
-                       CatalogItemName name,
-                       CatalogItemDescription description,
-                       Money price,
-                       CategoryId categoryId,
-                       Sku sku,
-                       Quantity stockQuantity) : base(id) {
+                         CategoryId categoryId,
+                         CatalogItemName name,
+                         CatalogItemDescription description,
+                         Money price,
+                         Sku sku,
+                         Quantity stockQuantity) : base(id) {
+        this.CategoryId = categoryId;
         this.Name = name;
         this.Description = description;
         this.Price = price;
-        this.CategoryId = categoryId;
         this.Sku = sku;
         this.StockQuantity = stockQuantity;
         this.IsAvailable = true;

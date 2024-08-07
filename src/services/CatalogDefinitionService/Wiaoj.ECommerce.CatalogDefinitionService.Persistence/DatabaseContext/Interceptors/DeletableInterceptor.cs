@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.Services;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.Services;
 using Wiaoj.Libraries.Domain.Abstractions;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Persistence.DatabaseContext.Interceptors;

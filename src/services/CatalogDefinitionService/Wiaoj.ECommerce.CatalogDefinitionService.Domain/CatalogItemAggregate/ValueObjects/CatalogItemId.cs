@@ -15,7 +15,9 @@ public sealed record CatalogItemId : IId<CatalogItemId> {
     public static CatalogItemId New(String value) {
         ArgumentException.ThrowIfNullOrWhiteSpace(value);
 
-        return !Ulid.TryParse(value, out Ulid _) ? throw new Exception("Id is not valid") : new(value);
+        return Ulid.TryParse(value, out Ulid _)
+            ? new(value)
+            : throw new Exception("Id is not valid");
     }
 
     public static implicit operator String(CatalogItemId id) {

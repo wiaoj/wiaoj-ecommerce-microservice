@@ -1,6 +1,7 @@
 ﻿using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.DomainEvents;
 using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
 using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CategoryAggregate.ValueObjects;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.Services;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.Services;
 internal sealed class CatalogItemCreationService : ICatalogItemCreationService {
@@ -20,10 +21,10 @@ internal sealed class CatalogItemCreationService : ICatalogItemCreationService {
                               Quantity stockQuantity) {
 
         CatalogItem catalogItem = new(CatalogItemId.New(),
+                                      categoryId,
                                       name,
                                       description,
                                       price,
-                                      categoryId,
                                       sku ?? GenerateSku(name, categoryId),
                                       stockQuantity);
         catalogItem.AddDomainEvent(CreateDomainEvent(this.dateTimeProvider, catalogItem.Id, catalogItem.CategoryId));
@@ -37,7 +38,7 @@ internal sealed class CatalogItemCreationService : ICatalogItemCreationService {
     private CatalogItemCreatedDomainEvent CreateDomainEvent(IDateTimeProvider dateTimeProvider,
                                                             CatalogItemId id,
                                                             CategoryId categoryId) {
-        return new(dateTimeProvider.UtcNow, 1) {
+        return new(dateTimeProvider.UtcNow) {
             CatalogItemId = id,
             CategoryId = categoryId
         };
