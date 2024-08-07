@@ -1,6 +1,7 @@
 ﻿using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate;
 using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
 using Wiaoj.Libraries.Domain.Abstractions;
+using Wiaoj.Libraries.Domain.Abstractions.ValueObjects;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Application.Repositories;
 public interface ICatalogItemRepository
