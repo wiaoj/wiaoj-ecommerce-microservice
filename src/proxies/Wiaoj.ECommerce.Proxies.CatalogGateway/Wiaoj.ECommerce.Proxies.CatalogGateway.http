@@ -1,6 +1,0 @@
-@Wiaoj.ECommerce.Proxies.CatalogGateway_HostAddress = http://localhost:5277
-
-GET {{Wiaoj.ECommerce.Proxies.CatalogGateway_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

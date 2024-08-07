@@ -1,4 +1,5 @@
 using Mediator;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Wiaoj.ECommerce.CatalogDefinitionService.Application;
 using Wiaoj.ECommerce.CatalogDefinitionService.Application.Feature.CatalogItems.Commands.CreateCatalogItem;
 using Wiaoj.ECommerce.CatalogDefinitionService.Application.Feature.Categories.Commands.CreateCategory;
@@ -8,7 +9,12 @@ using Wiaoj.Libraries.AspNetCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.WebHost.ConfigureKestrel((options) => {
+    options.ConfigureEndpointDefaults(configure => {
+        configure.Protocols = HttpProtocols.Http3;
+        configure.UseHttps();
+    });
+});
 
 builder.Services
     .AddApplicationServices()
