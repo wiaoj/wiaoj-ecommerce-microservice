@@ -1,5 +1,6 @@
 ﻿using Wiaoj.Libraries.Domain.Abstractions.DomainEvents;
 using Wiaoj.Libraries.Domain.Abstractions.Exceptions;
+using Wiaoj.Libraries.Domain.Abstractions.ValueObjects;
 
 namespace Wiaoj.Libraries.Domain.Abstractions;
 public abstract class Aggregate<TId> : IAggregate, IHasDomainEvent

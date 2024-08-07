@@ -1,4 +1,4 @@
-﻿namespace Wiaoj.Libraries.Domain.Abstractions;
+﻿namespace Wiaoj.Libraries.Domain.Abstractions.ValueObjects;
 public interface IValueObject<out TSelf> {
     static abstract TSelf New();
 }
