@@ -3,7 +3,7 @@ using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CategoryAggregate.ValueObj
 using Wiaoj.Libraries.Domain.Abstractions.DomainEvents;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.DomainEvents;
-public sealed record CatalogItemCreatedDomainEvent(DateTimeOffset TimeStampt, Int32 Version) : DomainEvent(TimeStampt, Version) {
+public sealed record CatalogItemCreatedDomainEvent(DateTimeOffset TimeStampt) : DomainEvent(TimeStampt, 1) {
     public required CatalogItemId CatalogItemId { get; init; }
     public required CategoryId CategoryId { get; init; }
 }

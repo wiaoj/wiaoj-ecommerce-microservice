@@ -8,7 +8,19 @@ public interface ISkuGenerator {
 
 internal sealed class DefaultSkuGenerator : ISkuGenerator {
     public Sku Generate(CatalogItemName name, CategoryId categoryId) {
-        String skuString = $"{categoryId.Value}-{name.Value.AsSpan()[..3]}-{Ulid.NewUlid().ToString().AsSpan()[..8]}".ToUpper();
+        String skuString = $"{ParseCategoryId(categoryId)}-{ParseName(name)}-{ParseRandomize()}".ToUpper();
         return Sku.New(skuString);
+    }
+
+    private static ReadOnlySpan<Char> ParseRandomize() {
+        return Ulid.NewUlid().ToString().AsSpan()[^8..];
+    }
+
+    private static ReadOnlySpan<Char> ParseName(CatalogItemName name) {
+        return name.Value.AsSpan()[..3];
+    }
+
+    private static ReadOnlySpan<Char> ParseCategoryId(CategoryId categoryId) {
+        return categoryId.Value.AsSpan()[..8];
     }
 }

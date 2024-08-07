@@ -7,12 +7,16 @@ public sealed record CategoryId : IId<CategoryId> {
         this.Value = value;
     }
 
-    public static CategoryId New(String value) {
-        return new(value);
+    public static CategoryId New() {
+        return new(Ulid.NewUlid().ToString());
     }
 
-    public static CategoryId New() {
-        return new(Guid.NewGuid().ToString());
+    public static CategoryId New(String value) {
+        ArgumentException.ThrowIfNullOrWhiteSpace(value);
+
+        return Ulid.TryParse(value, out Ulid _) 
+            ? new(value) 
+            : throw new Exception("Id is not valid");
     }
 
     public static implicit operator String(CategoryId id) {

@@ -13,10 +13,10 @@ internal static class CatalogItemTestDatas {
         Quantity quantity = Quantity.New(10);
 
         return new(CatalogItemId.New(),
+                   categoryId,
                    name,
                    description,
                    money,
-                   categoryId,
                    sku,
                    quantity);
     }

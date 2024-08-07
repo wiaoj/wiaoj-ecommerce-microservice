@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Settings.Configuration;
 using Wiaoj.ECommerce.CatalogDefinitionService.Application.Abstractions;
-using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.Services;
+using Wiaoj.ECommerce.CatalogDefinitionService.Domain.Services;
 using Wiaoj.ECommerce.CatalogDefinitionService.Infrastructure.Events;
 using Wiaoj.ECommerce.CatalogDefinitionService.Infrastructure.Services;
 
