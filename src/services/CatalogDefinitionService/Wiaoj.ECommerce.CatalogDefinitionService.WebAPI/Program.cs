@@ -15,11 +15,20 @@ builder.Services
     .AddInfrastructureServices(builder.Configuration)
     .AddPersistenceServices()
     .AddCustomResponseCompression()
-    .ConfigureCustomHttpJsonOptions();
+    .ConfigureCustomHttpJsonOptions()
+    .AddCors(setup => {
+        setup.AddDefaultPolicy(policy => {
+            policy.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        });
+    });
 
 WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+app.UseCors();
 
 app.UseHttpsRedirection();
 
