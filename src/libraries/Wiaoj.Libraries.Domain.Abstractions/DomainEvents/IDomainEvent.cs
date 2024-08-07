@@ -3,6 +3,6 @@
 namespace Wiaoj.Libraries.Domain.Abstractions.DomainEvents;
 public interface IDomainEvent : INotification {
     DomainEventId Id { get; }
-    DateTimeOffset TimeStamp { get; }
+    DateTimeOffset OccurredAt { get; }
     Int32 Version { get; }
 }
