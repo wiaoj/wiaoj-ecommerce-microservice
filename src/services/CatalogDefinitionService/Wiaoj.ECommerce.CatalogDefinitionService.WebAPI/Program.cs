@@ -4,6 +4,7 @@ using Wiaoj.ECommerce.CatalogDefinitionService.Application.Feature.CatalogItems.
 using Wiaoj.ECommerce.CatalogDefinitionService.Application.Feature.Categories.Commands.CreateCategory;
 using Wiaoj.ECommerce.CatalogDefinitionService.Infrastructure;
 using Wiaoj.ECommerce.CatalogDefinitionService.Persistence;
+using Wiaoj.Libraries.AspNetCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,9 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddApplicationServices()
     .AddInfrastructureServices()
-    .AddPersistenceServices();
+    .AddPersistenceServices()
+    .AddCustomResponseCompression()
+    .ConfigureCustomHttpJsonOptions();
 
 WebApplication app = builder.Build();
 
