@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wiaoj.ECommerce.CatalogDefi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wiaoj.ECommerce.CatalogDefinitionService.WebAPI", "src\services\CatalogDefinitionService\Wiaoj.ECommerce.CatalogDefinitionService.WebAPI\Wiaoj.ECommerce.CatalogDefinitionService.WebAPI.csproj", "{D433BAAE-248B-4512-BCE3-9050A11371E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wiaoj.ECommerce.CatalogDefinitionService.Infrastructure", "src\services\CatalogDefinitionService\Wiaoj.ECommerce.CatalogDefinitionService.Infrastructure\Wiaoj.ECommerce.CatalogDefinitionService.Infrastructure.csproj", "{366F38FA-5B26-4CD5-8995-95037FBB71A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wiaoj.ECommerce.CatalogDefinitionService.Infrastructure", "src\services\CatalogDefinitionService\Wiaoj.ECommerce.CatalogDefinitionService.Infrastructure\Wiaoj.ECommerce.CatalogDefinitionService.Infrastructure.csproj", "{366F38FA-5B26-4CD5-8995-95037FBB71A9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7DC42FF2-00AE-429A-B70F-58975D5CFD02}"
 EndProject
@@ -29,7 +29,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{2F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CatalogDefinitionService", "CatalogDefinitionService", "{89B58BDD-4E51-4929-8D10-E92568FA8988}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wiaoj.ECommerce.CatalogDefinitionService.Domain.Tests", "tests\services\CatalogDefinitionService\Wiaoj.ECommerce.CatalogDefinitionService.Domain.Tests\Wiaoj.ECommerce.CatalogDefinitionService.Domain.Tests.csproj", "{6A005C6F-7760-41C0-AE61-A5800E034710}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wiaoj.ECommerce.CatalogDefinitionService.Domain.Tests", "tests\services\CatalogDefinitionService\Wiaoj.ECommerce.CatalogDefinitionService.Domain.Tests\Wiaoj.ECommerce.CatalogDefinitionService.Domain.Tests.csproj", "{6A005C6F-7760-41C0-AE61-A5800E034710}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wiaoj.Libraries.AspNetCore", "src\libraries\Wiaoj.Libraries.AspNetCore\Wiaoj.Libraries.AspNetCore.csproj", "{94979FD6-F35C-4B39-BDCD-1A37964A8DCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +67,10 @@ Global
 		{6A005C6F-7760-41C0-AE61-A5800E034710}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A005C6F-7760-41C0-AE61-A5800E034710}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A005C6F-7760-41C0-AE61-A5800E034710}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94979FD6-F35C-4B39-BDCD-1A37964A8DCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94979FD6-F35C-4B39-BDCD-1A37964A8DCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94979FD6-F35C-4B39-BDCD-1A37964A8DCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94979FD6-F35C-4B39-BDCD-1A37964A8DCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +88,7 @@ Global
 		{2FD39FD5-B0A2-404E-B4BD-DB7E3EF1E166} = {7DC42FF2-00AE-429A-B70F-58975D5CFD02}
 		{89B58BDD-4E51-4929-8D10-E92568FA8988} = {2FD39FD5-B0A2-404E-B4BD-DB7E3EF1E166}
 		{6A005C6F-7760-41C0-AE61-A5800E034710} = {89B58BDD-4E51-4929-8D10-E92568FA8988}
+		{94979FD6-F35C-4B39-BDCD-1A37964A8DCA} = {6741F607-7FCE-4603-88AE-61447BD14222}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D742EFC8-C25B-46CB-A412-9A1663C6E216}
