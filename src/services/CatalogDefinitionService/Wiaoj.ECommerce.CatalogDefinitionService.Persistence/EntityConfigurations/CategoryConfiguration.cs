@@ -8,7 +8,7 @@ using Wiaoj.ECommerce.CatalogDefinitionService.Persistence.EntityConfigurations.
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Persistence.EntityConfigurations;
 internal sealed class CategoryConfiguration : IEntityTypeConfiguration<Category> {
     private static class Constants {
-        public const String Id = "id";
+        public const String Id = "Id";
         public const String Name = "name";
         public const String CatalogItemId = "catalog-item-id";
     }
@@ -35,7 +35,8 @@ internal sealed class CategoryConfiguration : IEntityTypeConfiguration<Category>
     private static void ConfigureCategoryCatalogItemIdsTable(EntityTypeBuilder<Category> builder) {
         builder.OwnsMany(category => category.Items, navigationBuilder => {
             navigationBuilder.ToTable(DbConstants.CategoryCatalogItemIds.TableName, DbConstants.Schema);
-            //navigationBuilder.HasKey(Constants.Id);
+
+            navigationBuilder.HasKey(Constants.Id);
 
             navigationBuilder.WithOwner().HasForeignKey(DbConstants.CategoryCatalogItemIds.ForeignKey);
 
