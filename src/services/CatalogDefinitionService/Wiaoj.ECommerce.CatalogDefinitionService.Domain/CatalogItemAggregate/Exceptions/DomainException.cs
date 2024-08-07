@@ -1,2 +1,2 @@
 ﻿namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.Exceptions;
-public abstract class DomainException(string value) : Exception(value);
+public abstract class DomainException(String value) : Exception(value);

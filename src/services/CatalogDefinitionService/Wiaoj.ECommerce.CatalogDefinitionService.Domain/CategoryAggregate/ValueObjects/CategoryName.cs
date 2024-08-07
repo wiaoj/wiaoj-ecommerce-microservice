@@ -1,5 +1,4 @@
 ﻿using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.Exceptions;
-using Wiaoj.Libraries.Domain.Abstractions;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.CategoryAggregate.ValueObjects;
 public readonly record struct CategoryName : IValueObject<CategoryName, String> {

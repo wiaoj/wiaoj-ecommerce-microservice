@@ -1,6 +1,4 @@
-﻿using Wiaoj.Libraries.Domain.Abstractions;
-
-namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
+﻿namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
 public sealed record CatalogItemId : IId<CatalogItemId> {
     public String Value { get; }
 
