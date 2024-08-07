@@ -1,0 +1,1 @@
+﻿global using Wiaoj.Libraries.Domain.Abstractions.ValueObjects;

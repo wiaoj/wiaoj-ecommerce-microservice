@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CategoryAggregate.ValueObjects;
+﻿using Wiaoj.ECommerce.CatalogDefinitionService.Domain.CategoryAggregate.ValueObjects;
 
 namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.CategoryAggregate.Services;
 internal class CategoryCreationService : ICategoryCreationService {

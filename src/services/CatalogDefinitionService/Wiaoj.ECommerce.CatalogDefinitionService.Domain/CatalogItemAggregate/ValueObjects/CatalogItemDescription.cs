@@ -1,6 +1,4 @@
-﻿using Wiaoj.Libraries.Domain.Abstractions;
-
-namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
+﻿namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
 public readonly record struct CatalogItemDescription : IValueObject<CatalogItemDescription, String> {
     public const Int32 MinLength = 10;
     public const Int32 MaxLength = 1000;

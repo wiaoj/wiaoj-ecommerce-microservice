@@ -1,6 +1,4 @@
-﻿using Wiaoj.Libraries.Domain.Abstractions;
-
-namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
+﻿namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
 public sealed record CatalogItemPrice : IValueObject<CatalogItemPrice, Money> {
     public Money Value { get; set; }
 

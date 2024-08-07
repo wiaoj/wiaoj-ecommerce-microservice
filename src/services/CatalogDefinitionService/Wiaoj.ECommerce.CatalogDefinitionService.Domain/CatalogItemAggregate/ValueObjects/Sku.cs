@@ -1,7 +1,5 @@
-﻿using Wiaoj.Libraries.Domain.Abstractions;
-
-namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
-public readonly record struct Sku : IValueObject<Sku, String> {
+﻿namespace Wiaoj.ECommerce.CatalogDefinitionService.Domain.CatalogItemAggregate.ValueObjects;
+public readonly record struct Sku : IValueObject<Sku, String>, INullableValueObject<Sku?, String> {
     public String Value { get; }
     private Sku(String value) {
         this.Value = value;
