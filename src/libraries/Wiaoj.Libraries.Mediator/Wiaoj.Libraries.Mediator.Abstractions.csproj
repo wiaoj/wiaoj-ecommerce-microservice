@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+      <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+      <Title>Wiaoj.Libraries.Mediator.Abstractions</Title>
+      <Authors>Wiaoj</Authors>
+      <PackageTags>mediator,cqrs</PackageTags>
+      <PlatformTarget>AnyCPU</PlatformTarget>
+      <Version>1.1.0</Version>
+      <AssemblyVersion>$(VersionPrefix)</AssemblyVersion>
+      <FileVersion>$(VersionPrefix)</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Mediator.Abstractions" Version="2.1.7" />
+    <PackageReference Include="Mediator.SourceGenerator" Version="2.1.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Mediator">
+      <Alias>BaseMediator</Alias>
+    </Using>
+  </ItemGroup>
+
+</Project>

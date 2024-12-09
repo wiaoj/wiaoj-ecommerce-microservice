@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+      <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+      <Title>Wiaoj.Libraries.Repository.Abstractions</Title>
+      <Authors>Wiaoj</Authors>
+      <PackageTags>repository</PackageTags>
+      <PlatformTarget>AnyCPU</PlatformTarget>
+      <Version>1.0.0</Version>
+      <AssemblyVersion>$(VersionPrefix)</AssemblyVersion>
+      <FileVersion>$(VersionPrefix)</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Wiaoj.Libraries.Domain.Abstractions" Version="1.3.1" />
+  </ItemGroup>
+
+</Project>
